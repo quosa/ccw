@@ -1,0 +1,2 @@
+# Replace this with your actual puzzle input from https://adventofcode.com/2024/day/1/input
+# The input should be two columns of numbers separated by spaces
