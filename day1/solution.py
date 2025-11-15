@@ -3,6 +3,9 @@
 Advent of Code 2024 - Day 1: Historian Hysteria
 """
 
+from collections import Counter
+
+
 def parse_input(filename):
     """Parse the input file and return two lists of numbers."""
     left_list = []
@@ -39,6 +42,25 @@ def calculate_total_distance(left_list, right_list):
     return total_distance
 
 
+def calculate_similarity_score(left_list, right_list):
+    """
+    Calculate the similarity score between two lists.
+
+    For each number in the left list, multiply it by the number of times
+    it appears in the right list, then sum all these products.
+    """
+    # Count occurrences of each number in the right list
+    right_counts = Counter(right_list)
+
+    # Calculate similarity score
+    similarity_score = 0
+    for num in left_list:
+        count = right_counts.get(num, 0)
+        similarity_score += num * count
+
+    return similarity_score
+
+
 def main():
     # Parse input
     left_list, right_list = parse_input('input.txt')
@@ -46,6 +68,10 @@ def main():
     # Part 1: Calculate total distance
     total_distance = calculate_total_distance(left_list, right_list)
     print(f"Part 1 - Total distance: {total_distance}")
+
+    # Part 2: Calculate similarity score
+    similarity_score = calculate_similarity_score(left_list, right_list)
+    print(f"Part 2 - Similarity score: {similarity_score}")
 
 
 if __name__ == "__main__":
